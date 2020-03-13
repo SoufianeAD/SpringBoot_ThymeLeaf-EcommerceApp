@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+		<link th:href="@{/css/startbootstrap-shop-homepage-gh-pages/startbootstrap-shop-homepage-gh-pages/css/shop-homepage.css}" rel="stylesheet">
+		<link th:href="@{/css/startbootstrap-shop-homepage-gh-pages/startbootstrap-shop-homepage-gh-pages/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" th:href="@{/css/Style-01.css}" />
+	</head>
+	<body>
+		<header th:insert="fragments/Top-nav :: header"></header>
+		<div class="container boder" style="margin-top: 20px; margin-bottom: 20px;">
+			<div class="container border">
+			    <h1 th:text="${'this is My cart : ' + client.userName}" ></h1>
+			    <!-- stop -->
+			       <div class="row">
+			        <div class="col-lg-4 col-md-6 mb-4"  th:each="product : ${products}">
+			            <div class="card h-100">
+			                 <img class="card-img-top"  th:src="@{${'/images/' + product.imagePath}}" alt="">
+			              <div class="card-body">
+			                <h4 class="card-title" th:text="${product.title}"> </h4>
+			                <ul class="list-group list-group-flush">
+			                  <li class="list-group-item">
+			                  	<div>
+			                  		<p style="display: inline-block;" th:text="${'Prix: ' + product.price + ' DH'}"></p>
+				                  	<a style="float: right;" th:href="@{/cart/deleteProduct/{id}(id=${product.id})}">
+								  		<i class="fa fa-trash" aria-hidden="true" style="font-size: 24px;"></i>
+								  	</a>
+			                  	</div>
+			                  </li>
+			                </ul>
+			            </div>
+			          </div>
+			        </div>
+			    </div>
+			    <div style="width: 100%; text-align: center; margin-top: 40px; margin-bottom: 30px;">
+			    	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+					<i class="fa fa-cart-plus"></i> Valider
+				</button>
+			    </div>
+			</div>
+		</div>
+		
+		
+		
+		<!-- Modal -->
+  		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		      </div>
+		      <div class="modal-body">
+		        <div class="container to-center">
+		       		 <!-- content -->
+					<div class="row">
+					<!-- You can make it whatever width you want. I'm making it full width
+					on <= small devices and 4/12 page width on >= medium devices -->
+					<div class="col-xs-12 col-md-10">
+					
+					
+					<!-- CREDIT CARD FORM STARTS HERE -->
+					<div class="panel panel-default credit-card-box">
+					<div class="panel-heading display-table" >
+					<div class="row display-tr" >
+					<h3 class="panel-title display-td" >Payment Details</h3>
+					<div class="display-td" >                            
+					<img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+					</div>
+					</div>                    
+					</div>
+					<div class="panel-body">
+					<div class="row">
+					<div class="col-xs-12">
+					<div class="form-group">
+					<label for="cardNumber">CARD NUMBER</label>
+					<div class="input-group">
+					<input 
+					type="tel"
+					class="form-control"
+					name="cardNumber"
+					placeholder="Valid Card Number"
+					autocomplete="cc-number"
+					required autofocus 
+					/>
+					<span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+					</div>
+					</div>                            
+					</div>
+					</div>
+					<div class="row">
+					<div class="col-xs-7 col-md-7">
+					<div class="form-group">
+					<label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+					<input 
+					type="tel" 
+					class="form-control" 
+					name="cardExpiry"
+					placeholder="MM / YY"
+					autocomplete="cc-exp"
+					required 
+					/>
+					</div>
+					</div>
+					<div class="col-xs-5 col-md-5 pull-right">
+					<div class="form-group">
+					<label for="cardCVC">CV CODE</label>
+					<input 
+					type="tel" 
+					class="form-control"
+					name="cardCVC"
+					placeholder="CVC"
+					autocomplete="cc-csc"
+					required
+					/>
+					</div>
+					</div>
+					</div>
+					<div class="row">
+					<div class="col-xs-12">
+					<div class="form-group">
+					<label for="couponCode">COUPON CODE</label>
+					<input type="text" class="form-control" name="couponCode" />
+					</div>
+					</div>                        
+					</div>
+					<div class="row">
+					<div class="col-xs-10">
+					<a th:href="@{/product/shopProduct}">
+	<!-- ici -->		<button class="btn btn-primary">Valider</button>
+					</a>
+					</div>
+					</div>
+					<div class="row" style="display:none;">
+					<div class="col-xs-12">
+					<p class="payment-errors"></p>
+					</div>
+					</div>
+					</div>
+					</div>            
+					<!-- CREDIT CARD FORM ENDS HERE -->
+					
+					
+					</div>            
+					
+					
+					
+					</div>
+					</div>
+					<!-- Content end -->
+		      </div>
+		      
+		    </div>
+		
+		  </div>
+  		</div>
+  		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</body>
+</html>

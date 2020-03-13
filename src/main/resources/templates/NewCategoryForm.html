@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link th:href="@{/css/startbootstrap-shop-homepage-gh-pages/startbootstrap-shop-homepage-gh-pages/css/shop-homepage.css}" rel="stylesheet">
+		<link th:href="@{/css/startbootstrap-shop-homepage-gh-pages/startbootstrap-shop-homepage-gh-pages/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" th:href="@{/css/startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/css/simple-sidebar.css}" />
+	</head>
+	<body>
+		<header th:insert="fragments/Top-nav :: header"></header>
+		<div class="d-flex" id="wrapper">
+			<div th:insert="fragments/Sidenav :: sidenav"></div>
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				<div class="container border spacing" style="width: 60%; margin-top: 5%; padding: 2% 2% 0% 2%;">
+					<h1>Ajouter une nouvelle catégorie</h1>
+					<form class="border border-light p-5" th:action="@{/category/newCategory}" method="post" th:object="${category}">
+						<div class="form-group">
+							<input type="text" class="form-control" id="title" placeholder="Titre" th:field="*{title}">
+						</div>
+						<div class="form-group">
+							<label for="imagePath">Image :</label>
+							<input type="file" class="form-control" id="imagePath"  name="image">
+						</div>
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary to-right">Ajouter</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+	</body>
+</html>

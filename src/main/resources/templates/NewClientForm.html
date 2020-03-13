@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" th:href="@{/css/Style-01.css}" />
+		<link th:href="@{/css/startbootstrap-shop-homepage-gh-pages/startbootstrap-shop-homepage-gh-pages/css/shop-homepage.css}" rel="stylesheet">
+		<link th:href="@{/css/startbootstrap-shop-homepage-gh-pages/startbootstrap-shop-homepage-gh-pages/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<header th:insert="fragments/Top-nav :: header"></header>
+		<div class="container border spacing" style="width: 30%;">
+			<form class="text-center border border-light p-5" th:action="@{/client/newClient}" method="post" th:object="${client}">
+				<p class="h4 mb-4">Inscription client</p>
+				<div class="form-group">
+					<input type="text" class="form-control" id="userName" placeholder="Nom d' utilisateur" th:field="*{userName}">
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" id="password" placeholder="password" th:field="*{password}">
+				</div>
+				<button type="submit" class="btn btn-primary to-right">S'inscrire</button>
+			</form>
+		</div>
+	</body>
+</html>

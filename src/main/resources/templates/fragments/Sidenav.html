@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" th:href="@{/css/Style-01.css}" />
+		<link rel="stylesheet" th:href="@{/css/startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/css/simple-sidebar.css}" />
+	</head>
+
+	<body>
+		<div th:fragment="sidenav">
+			<div class="bg-light border-right" id="sidebar-wrapper">
+		      <div class="sidebar-heading">Admin Dashboard</div>
+		      <div class="list-group list-group-flush">
+		        <a th:href="@{/category/categoriesList}" class="list-group-item list-group-item-action bg-light">Liste des catégories</a>
+		        <a th:href="@{/product/productsList}" class="list-group-item list-group-item-action bg-light">liste des produits</a>
+		        <a th:href="@{/admin/adminList}" class="list-group-item list-group-item-action bg-light">liste des admins</a>
+		        <a th:href="@{/category/newCategoryForm}" class="list-group-item list-group-item-action bg-light">Nouvelle categorie</a>
+		        <a th:href="@{/product/newProductForm}" class="list-group-item list-group-item-action bg-light">Nouveau produit</a>
+		        <a th:href="@{/admin/newAdminForm}" class="list-group-item list-group-item-action bg-light">Nouveau admin</a>
+		      </div>
+		    </div>
+		</div>
+	</body>
+</html>

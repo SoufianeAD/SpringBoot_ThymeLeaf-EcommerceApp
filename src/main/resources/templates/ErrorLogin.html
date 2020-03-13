@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		  <title>Ecommerce</title>
+		  <meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+		  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		  <script th:src="@{js/Session.js}"></script>
+	</head>
+	<body>
+		<div class="alert alert-danger" role="alert">
+			Nom d'utilisateur ou mot de passe incorrecte!
+		</div>
+		<form th:action="@{/category/categories}" method="get">
+			<button type="submit" class="btn btn-primary to-right">Réssayer</button>
+		</form>
+	</body>
+</html>

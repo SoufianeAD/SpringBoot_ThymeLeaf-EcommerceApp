@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link th:href="@{/css/startbootstrap-shop-homepage-gh-pages/startbootstrap-shop-homepage-gh-pages/css/shop-homepage.css}" rel="stylesheet">
+		<link th:href="@{/css/startbootstrap-shop-homepage-gh-pages/startbootstrap-shop-homepage-gh-pages/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" th:href="@{/css/startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/css/simple-sidebar.css}" />
+	</head>
+	<body>
+		<header th:insert="fragments/Top-nav :: header"></header>
+		<div class="d-flex" id="wrapper">
+			<div th:insert="fragments/Sidenav :: sidenav"></div>
+				<div id="page-content-wrapper">
+					<div class="container-fluid">
+						<div class="container border spacing" style="margin-top: 5%; margin-bottom: 5%; padding: 2% 2% 0% 2%;">
+							<h1>Liste des produits</h1>
+							<table class="table table-striped">
+							  <thead class="thead-light">
+							    <tr>
+							      <th scope="col">Image</th>
+							      <th scope="col">Titre</th>
+							      <th scope="col">Prix</th>
+							      <th scope="col">Quantité en stock</th>
+							      <th></th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							  	<tr th:each="product : ${products}">
+							  		<td>
+							  			<img th:src="@{${'/images/' + product.imagePath}}" alt="" class="rounded-circle h-25 img-thumbnail">
+							  		</td>
+							  		<td th:text="${product.title}"></td>
+							  		<td th:text="${product.price + ' DH'}"></td>
+							  		<td th:text="${product.quantity}"></td>
+							  		<td>
+								  		<a th:href="@{/product/deleteProduct/{id}(id=${product.id})}">
+								  			<i class="fa fa-trash" aria-hidden="true" style="font-size: 24px;"></i>
+								  		</a>
+							  		</td>
+							  	</tr>
+							  </tbody>
+						 </table>
+						</div>
+					</div>
+				</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link th:href="@{/css/startbootstrap-shop-homepage-gh-pages/startbootstrap-shop-homepage-gh-pages/css/shop-homepage.css}" rel="stylesheet">
+		<link th:href="@{/css/startbootstrap-shop-homepage-gh-pages/startbootstrap-shop-homepage-gh-pages/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" th:href="@{/css/startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/css/simple-sidebar.css}" />
+	</head>
+	<body>
+		<header th:insert="fragments/Top-nav :: header"></header>
+		<div class="d-flex" id="wrapper">
+			<div th:insert="fragments/Sidenav :: sidenav"></div>
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				<div class="container border spacing" style="width: 60%; margin-top: 5%; padding: 2% 2% 0% 2%;">
+					<h1 class="text-center">Ajouter un nouveau admin</h1>
+					<form class="text-center border border-light p-5" th:action="@{/admin/newAdmin}" method="post" th:object="${newAdmin}">
+						<div class="form-group">
+							<input type="text" class="form-control" id="userName" placeholder="Nom d' utilisateur" th:field="*{userName}">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="password" placeholder="password" th:field="*{password}">
+						</div>
+						<button class="btn btn-info" type="submit">Valider</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+	</body>
+</html>
